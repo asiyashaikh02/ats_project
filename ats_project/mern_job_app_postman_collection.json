@@ -1,0 +1,186 @@
+{
+  "info": {
+    "name": "MERN Job App API",
+    "_postman_id": "12345678-1234-5678-1234-567812345678",
+    "description": "Postman collection for testing JobDescription and Applicant APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "JobDescriptions",
+      "item": [
+        {
+          "name": "Create JD",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/jds",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "jds"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Fullstack Developer\",\n  \"description\": \"Responsible for developing scalable web apps\",\n  \"skillsRequired\": [\n    \"Node.js\",\n    \"React\",\n    \"MongoDB\"\n  ],\n  \"minExperience\": 2\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All JDs",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/api/jds"
+          }
+        },
+        {
+          "name": "Get JD by ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/api/jds/:id"
+          }
+        },
+        {
+          "name": "Update JD",
+          "request": {
+            "method": "PUT",
+            "url": "http://localhost:3000/api/jds/:id",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Senior Fullstack Developer\",\n  \"minExperience\": 3\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete JD",
+          "request": {
+            "method": "DELETE",
+            "url": "http://localhost:3000/api/jds/:id"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Applicants",
+      "item": [
+        {
+          "name": "Create Applicant Alice",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "http://localhost:3000/api/applicants",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Alice Johnson\",\n  \"email\": \"alice@example.com\",\n  \"skills\": [\n    \"Node.js\",\n    \"React\",\n    \"MongoDB\"\n  ],\n  \"experience\": 3,\n  \"appliedFor\": \":jobId\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Create Applicant Bob",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "http://localhost:3000/api/applicants",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Bob Smith\",\n  \"email\": \"bob@example.com\",\n  \"skills\": [\n    \"JavaScript\",\n    \"HTML\",\n    \"CSS\"\n  ],\n  \"experience\": 1,\n  \"appliedFor\": \":jobId\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Applicants",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/api/applicants"
+          }
+        },
+        {
+          "name": "Get Applicant by ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/api/applicants/:id"
+          }
+        },
+        {
+          "name": "Update Applicant",
+          "request": {
+            "method": "PUT",
+            "url": "http://localhost:3000/api/applicants/:id",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"experience\": 4,\n  \"skills\": [\n    \"Node.js\",\n    \"React\",\n    \"MongoDB\",\n    \"GraphQL\"\n  ]\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Applicant",
+          "request": {
+            "method": "DELETE",
+            "url": "http://localhost:3000/api/applicants/:id"
+          }
+        },
+        {
+          "name": "Run Shortlist for JD",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:3000/api/applicants/shortlist/:jobId"
+          }
+        },
+        {
+          "name": "List Shortlisted",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/api/applicants/status/Shortlisted"
+          }
+        },
+        {
+          "name": "List Rejected",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/api/applicants/status/Rejected?jobId=:jobId"
+          }
+        },
+        {
+          "name": "List Applied",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/api/applicants/status/Applied"
+          }
+        }
+      ]
+    }
+  ]
+}
